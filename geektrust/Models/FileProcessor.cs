@@ -4,7 +4,7 @@ using System.Text;
 
 namespace geektrust.Models
 {
-    class FileProcessor : ICommandProcessor
+    public class FileProcessor : ICommandProcessor
     {
         public String FilePath { get; }
 
@@ -18,10 +18,22 @@ namespace geektrust.Models
 
         public void ProcessCommands(Family f)
         {
-            string[] lines = System.IO.File.ReadAllLines(this.FilePath);
-            foreach (string line in lines)
+            if(f == null)
             {
-                ProcessCommand(f, line);
+                Console.WriteLine(Messages.FAMILY_TREE_BUILDER_ERROR);
+                return;
+            }
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(this.FilePath);
+                foreach (string line in lines)
+                {
+                    ProcessCommand(f, line);
+                }
+            }
+            catch(Exception)
+            {
+                Console.WriteLine(Messages.INVALID_FILE);
             }
         }
 

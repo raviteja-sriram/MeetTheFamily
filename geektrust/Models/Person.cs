@@ -28,10 +28,17 @@ namespace geektrust.Models
 
         public void BearChild(Person child)
         {
-            this.Children.Add(child);
-            if (this.Spouse != null)
+            if (child != null)
             {
-                this.Spouse.Children.Add(child);
+                this.Children.Add(child);
+                if (this.Spouse != null)
+                {
+                    this.Spouse.Children.Add(child);
+                }
+            }
+            else
+            {
+                Console.WriteLine(Messages.CHILD_ADDITION_FAILED);
             }
         }
 
@@ -40,7 +47,7 @@ namespace geektrust.Models
             this.Spouse = spouse;
         }
 
-        public void InitRelationships()
+        private void InitRelationships()
         {
             Relationships.Add(Relations.Son, GetSonOrDaughters);
             Relationships.Add(Relations.Daughter, GetSonOrDaughters);

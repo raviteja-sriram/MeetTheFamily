@@ -28,7 +28,11 @@ namespace geektrust.Models
 
         public static readonly String INVALID_COMMAND = "INVALID COMMAND";
 
+        public static readonly String INVALID_FILE = "INVALID FILE";
+
         public static readonly String DULPLICATE_PERSON_ERROR = "DUPLICATE_PERSON_NAME_NOT_ALLOWED";
+
+        public static readonly String FAMILY_TREE_BUILDER_ERROR = "Building family tree failed";
     }
 
     public static class Relations
